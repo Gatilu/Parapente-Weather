@@ -1,0 +1,7 @@
+{
+  "name": "Parapente-Weather",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
