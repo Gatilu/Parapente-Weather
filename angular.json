@@ -12,7 +12,9 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
-          "options": {
+          "options": { "allowedCommonJsDependencies": [
+          "localforage"
+        ],
             "outputPath": "www",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -80,7 +82,7 @@
               "buildTarget": "app:build:development"
             },
             "ci": {
-              "progress": false
+              
             }
           },
           "defaultConfiguration": "development"
