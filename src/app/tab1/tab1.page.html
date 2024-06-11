@@ -1,17 +1,77 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <img src="https://pbs.twimg.com/media/GPvOA8IXMAErSZV?format=png&name=small" alt="imgparapente" class="imgpng">
+    <ion-buttons slot="end">
+      <ion-label *ngIf="userData$ | async as userData">
+        Olá, {{ userData.firstName }}
+      </ion-label>
+      <ion-button class="logout" (click)="logout()">
+        <ion-icon name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <div class="search-bar">
+    <ion-input [(ngModel)]="searchCity" placeholder="Procure um local"></ion-input>
+    <ion-button (click)="searchWeather()">Buscar</ion-button>
+  </div>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <div *ngIf="weatherData" class="weather-container">
+    <h1>{{ weatherData.name }}</h1>
+    <h2>{{ weatherData.main.temp | number: '1.0-0' }}°C</h2>
+    <p>{{ weatherData.main.temp_min | number: '1.0-0' }}°C / {{ weatherData.main.temp_max | number: '1.0-0' }}°C</p>
+    <img [src]="getWeatherIcon(weatherData.weather[0].icon)" class="weather-icon">
+    <p>{{ translateWeatherDescription(weatherData.weather[0].description) }}</p>
+    <div class="weather-info">
+      <div class="weather-info-item">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M460-160q-50 0-85-35t-35-85h80q0 17 11.5 28.5T460-240q17 0 28.5-11.5T500-280q0-17-11.5-28.5T460-320H80v-80h380q50 0 85 35t35 85q0 50-35 85t-85 35ZM80-560v-80h540q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43h-80q0-59 40.5-99.5T620-840q59 0 99.5 40.5T760-700q0 59-40.5 99.5T620-560H80Zm660 320v-80q26 0 43-17t17-43q0-26-17-43t-43-17H80v-80h660q59 0 99.5 40.5T880-380q0 59-40.5 99.5T740-240Z"/></svg>
+        <p>Vel. do vento</p>
+        <p>{{ weatherData.wind.speed | number: '1.0-0' }} km/h</p>
+      </div>
+      <div class="weather-info-item">
+        <ion-icon name="compass-outline"></ion-icon>
+        <p>Direção do vento</p>
+        <p>{{ windDirection }} ({{ weatherData.wind.deg }}°)</p>
+      </div>
+      <div class="weather-info-item">
+        <ion-icon name="water-outline"></ion-icon>
+        <p>Umidade</p>
+        <p>{{ weatherData.main.humidity }}%</p>
+      </div>
+      <div class="weather-info-item">
+        <ion-icon name="speedometer-outline"></ion-icon>
+        <p>Pressão</p>
+        <p>{{ weatherData.main.pressure }} hPa</p>
+      </div>
+      <div *ngIf="weatherData.rain" class="weather-info-item">
+        <ion-icon name="rainy-outline"></ion-icon>
+        <p>Possibilidade de chuva</p>
+        <p>{{ weatherData.rain['1h'] | number: '1.0-0' }} mm/h</p>
+      </div>
+    </div>
+    <div class="flight-status" [ngClass]="{'good': isGoodWeatherForFlying(), 'bad': !isGoodWeatherForFlying()}">
+      {{ getFlightStatus() }}
+    </div>
+  </div>
+
+  <div *ngIf="forecastData">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Previsão para os próximos 6 dias</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div *ngFor="let forecast of uniqueForecastDays(forecastData.list)">
+          <ion-item>
+            <ion-label>
+              <h2>{{ getDayOfWeek(forecast.dt) }}</h2>
+              <p>{{ forecast.main.temp_min | number: '1.0-0'}}° / {{ forecast.main.temp_max | number: '1.0-0'}}°</p>
+            </ion-label>
+            <img [src]="getWeatherIcon(forecast.weather[0].icon)" alt="Weather icon">
+          </ion-item>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

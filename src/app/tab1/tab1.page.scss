@@ -1,0 +1,171 @@
+:host {
+  --ion-background-color: #0093E9;
+  --ion-background-color-rgb: 0, 147, 233;
+  --ion-text-color: #ffffff;
+  --ion-toolbar-background: #80D0C7;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #ffffff;
+  background: #0093E9;
+
+}
+
+ion-toolbar {
+  --background: transparent;
+  --color: #ffffff;
+}
+
+ion-title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+ion-content {
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
+  --background: linear-gradient(180deg, #0093E9 0%, #80D0C7 100%);
+
+}
+
+.header-text {
+  font-size: 1.2rem;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.weather-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.weather-icon {
+  width: 100px;
+  height: 100px;
+  margin: 20px 0;
+}
+
+.weather-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 300px;
+}
+
+.weather-info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+
+.weather-info-item svg, .weather-info-item ion-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 5px;
+}
+
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.search-bar ion-input {
+  width: 70%;
+  margin-right: 10px;
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+.search-bar ion-button {
+  --background: #80D0C7;
+  --color: #ffffff;
+}
+
+.flight-status {
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.good {
+  background-color: #4CAF50;
+}
+
+.bad {
+  background-color: #F44336;
+}
+
+/* CSS for the forecast container */
+.forecast-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.forecast-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.forecast-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.forecast-temp {
+  font-size: 10px;
+  margin-bottom: 10px;
+}
+
+
+ion-card, ion-card-content, ion-item{
+  --background: #2ca2e7;
+
+}
+
+ion-card-title{
+  color: #ffffff;
+
+}
+
+ion-label p{
+color: #ffffff;
+}
+
+.logout{
+  background-color: #eb0000;
+  margin: 10px;
+  width: 40px;
+  margin-right: 10px;
+  align-items: right;
+  justify-content: right;
+
+
+}
+
+
+.imgpng{
+  width: 50px;
+  margin: 10px;
+}

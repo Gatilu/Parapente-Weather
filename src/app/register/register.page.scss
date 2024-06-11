@@ -1,0 +1,73 @@
+ion-content {
+  --background: #2c3e50; /* Fundo escuro */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  height: 100%;
+  text-align: center;
+}
+
+p {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #ecf0f1; /* Cor do texto */
+}
+
+form {
+  width: 100%;
+  max-width: 400px;
+  background: #34495e; /* Fundo escuro para o formulário */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+ion-item {
+  --inner-padding-end: 0;
+  --inner-padding-start: 0;
+  margin-bottom: 15px;
+  --background: #3b4a60; /* Campo de entrada cinza escuro */
+  --border-radius: 5px;
+  --padding-top: 8px;
+  --padding-bottom: 8px;
+}
+
+ion-label {
+  font-size: 14px;
+  color: #bdc3c7; /* Cor do texto do label */
+}
+
+ion-input {
+  --padding-start: 8px;
+  --padding-end: 8px;
+  color: #ecf0f1; /* Cor do texto de input */
+}
+
+ion-button {
+  --background: #2980b9; /* Cor do botão */
+  --border-radius: 5px;
+  font-size: 16px;
+  height: 50px;
+  margin-top: 20px;
+  color: #ecf0f1; /* Cor do texto do botão */
+}
+
+.register-link,
+.login-link {
+  margin-top: 20px;
+}
+
+.register-link p,
+.login-link p {
+  font-size: 14px;
+  color: #ecf0f1; /* Cor do texto */
+}
+
+.register-link a,
+.login-link a {
+  color: #3498db; /* Cor do link */
+  text-decoration: none;
+}
